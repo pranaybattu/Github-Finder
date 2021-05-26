@@ -1,13 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 
-const UserItems = (props) => {    
+const UserItems = ({details: {login,avatar_url,html_url}}) => {    
     return (
         <div className='card text-center'>
-            <img src={props.details.avatar_url} alt="" className='round-img' style={{width:'60px'}}/>
-            <h3>{props.details.login}</h3>
+            <img 
+            src={avatar_url} 
+            alt="" 
+            className='round-img' 
+            style={{width:'60px'}}
+            />
+            <h3>{login}</h3>
             <div>
-                <a href={props.details.html_url} className="btn btn-dark btn-sm my-1">more</a>
+                <Link to={`/user/${login}`} className="btn btn-dark btn-sm my-1">
+                    More
+                </Link>
             </div>
         </div>
     )
